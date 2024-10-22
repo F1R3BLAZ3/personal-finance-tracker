@@ -6,7 +6,7 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    transactions = db.relationship('Transaction', backref='user', lazy=True)
+    transactions = db.relationship('FinancialTransaction', backref='user', lazy=True)
     budgets = db.relationship('Budget', backref='user', lazy=True)
 
     def set_password(self, password):

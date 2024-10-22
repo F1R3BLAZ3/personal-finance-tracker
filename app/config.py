@@ -5,7 +5,11 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
-    basedir = os.path.abspath(os.path.dirname(__file__))
+    basedir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    f'sqlite:///{os.path.join(basedir, "instance", "personal_finance_tracker.db")}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS') == 'True'
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+
+# Print the Database URI
+print("Database URI:", Config.SQLALCHEMY_DATABASE_URI)
