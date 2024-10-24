@@ -1,5 +1,4 @@
-from flask import Blueprint, request, jsonify
-from ..models import db, User, FinancialTransaction, Budget
+from flask import Blueprint
 
 main = Blueprint('main', __name__)
 

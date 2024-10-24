@@ -35,4 +35,8 @@ def create_app():
     from .routes.auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
+    # Import and register transactions blueprint for transaction routes
+    from .routes.transactions import transactions as transactions_blueprint
+    app.register_blueprint(transactions_blueprint)
+
     return app
